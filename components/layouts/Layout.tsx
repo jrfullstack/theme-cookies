@@ -14,7 +14,7 @@ export const Layout: FC<Props> = ({ children }) => {
             <nav>
                 <Navbar/>
             </nav>
-            <main style={{ padding: "20px 50 px" }}>{children}</main>
+            <main style={{ padding: "20px 50px" }}>{children}</main>
         </>
     );
 };
