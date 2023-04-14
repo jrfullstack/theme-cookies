@@ -1,7 +1,7 @@
-import { Layout } from "@/components/layouts"
+import { ChangeEvent, useEffect, useState } from "react";
 import { Card, FormControl, FormLabel, CardContent, RadioGroup, FormControlLabel, Radio } from "@mui/material";
-import { ChangeEvent, useState } from "react";
-
+import Cookies from "js-cookie";
+import { Layout } from "@/components/layouts"
 
 const ThemeChangerPage = () => {
 
@@ -13,7 +13,18 @@ const ThemeChangerPage = () => {
     console.log({selectedTheme});
 
     setCurrentTheme(selectedTheme);
+
+    // m1 localstorage
+    localStorage.setItem('theme', selectedTheme);
+
+    // m2 cookies
+    Cookies.set('theme', selectedTheme);
   }
+
+  useEffect(() => {
+    console.log('LocalStorage', localStorage.getItem('theme'))
+  }, [])
+  
 
   return (
       <Layout>
