@@ -10,23 +10,19 @@ interface Props {
 }
 
 
-const ThemeChangerPage:FC<Props> = ({theme}) => {
-
-  // console.log({props})
+const ThemeChangerPage:FC<Props> = ({theme}) => {  
 
   const [currentTheme, setCurrentTheme] = useState(theme);
 
   const onThemeChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedTheme = event.target.value;
 
-    // console.log({selectedTheme});
-
     setCurrentTheme(selectedTheme);
 
-    // m1 localstorage
+    // m1 localstorage no lo manda al server
     localStorage.setItem('theme', selectedTheme);
 
-    // m2 cookies
+    // m2 cookies lo manda al server
     Cookies.set('theme', selectedTheme);
   }
 
@@ -81,14 +77,11 @@ const ThemeChangerPage:FC<Props> = ({theme}) => {
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
 
-
 export const getServerSideProps: GetServerSideProps = async ({req}) => {
 
   const {theme = 'light', name = 'No name'} = req.cookies;
 
-  const validThemes = ['light', 'dark', 'custom'];
-
-  // console.log({cookies})
+  const validThemes = ['light', 'dark', 'custom'];  
 
   return {
     props: {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { AppContext, AppProps } from 'next/app';
+import type { AppProps } from 'next/app';
 
 import { CssBaseline, ThemeProvider } from "@mui/material";
 
